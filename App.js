@@ -15,7 +15,7 @@ export default class LotsOfGreetings extends Component {
       <View style={{alignItems: 'center'}}>
       <Greeting name='Rexxar' />
       <Greeting name='Jaina'/>
-      <Greeting name='Valeera' />
+      <Greeting name='Valeera ' />
       </View>
     )
   }
