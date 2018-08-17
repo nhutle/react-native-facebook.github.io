@@ -1,43 +1,65 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, View } from 'react-native';
 
-class Blink extends Component {
-    constructor(props) {
-        super(props);
+export default class ButtonBasics extends Component {
+  _onPressButton() {
+    Alert.alert('You tapped the button!')
+  }
 
-        this.state = {isShowingText: true};
-
-        // Toggle the state every second:
-        setInterval(() => {
-            this.setState(previousState => {
-                return {
-                    isShowingText: !previousState.isShowingText
-                }
-            });
-        }, 1000);
-    }
-
-    render() {
-        let display = this.state.isShowingText ? this.props.text : '';
-
-        return (
-            <Text>{display}</Text>
-        );
-    }
-}
-
-export default class BlinkApp extends Component {
   render() {
     return (
-      <View style={{alignItems: 'center'}}>
-        <Blink text='I love to blink' />
-        <Blink text='Yes blinking is so great' />
-        <Blink text='Why did they ever take this out of HTML' />
-        <Blink text='Look at me look at me look at me' />
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="Press Me"
+          />
+        </View>
+        <View style={styles.container}>
+
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="Press Me"
+            color="#841584"
+          />
+        </View>
+        <View style={styles.alternativeLayoutButtonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="This looks great!"
+          />
+          <Button
+            onPress={this._onPressButton}
+            title="OK!"
+            color="#841584"
+          />
+          <Button 
+          onPress={this._onPressButton}
+          title="OK!"
+          color="#ddd"
+          />
+        </View>
       </View>
     );
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+   flex: 1,
+   justifyContent: 'center',
+  },
+  buttonContainer: {
+    margin: 20
+  },
+  alternativeLayoutButtonContainer: {
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
+})
+
 // skip this line if using Create React Native App
-AppRegistry.registerComponent('AwesomeProject', () => BlinkApp);
+AppRegistry.registerComponent('AwesomeProject', () => ButtonBasics);
